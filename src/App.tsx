@@ -1,9 +1,8 @@
-import { For, createResource, createEffect } from "solid-js";
+import { For, createResource, createEffect, createSignal } from "solid-js";
+import { createStore } from "solid-js/store";
 import Button from "./components/button";
 import InputField from "./components/input-field";
 import TaskRow from "./components/task-row";
-import { createStore } from "solid-js/store";
-import { createSignal } from "solid-js";
 
 export interface ITask {
   id: number;
@@ -31,7 +30,7 @@ function App() {
     if (taskList && taskList.length > 0) {
       
       if (allTasks.length === 0 && taskList) {
-        setAllTasks((tasks) => [...tasks, ...taskList]);
+        setAllTasks((tasks: ITask[]) => [...tasks, ...taskList]);
       }
     }
   });
@@ -39,21 +38,21 @@ function App() {
   const handleAddClick = () => {
     if (newTask()) {
       const id = taskId();
-      setAllTasks((t) => [...t, { id, name: newTask(), isDone: false }]);
-      setTaskId(prev => prev + 1);
+      setAllTasks((tasks: ITask[]) => [...tasks, { id, name: newTask(), isDone: false }]);
+      setTaskId((prev: number) => prev + 1);
       setNewTask("");
     }
   };
 
   const handleDeleteClick = (id: number) => {
-    setAllTasks((t) => t.filter((item) => item.id !== id));
+    setAllTasks((t: ITask[]) => t.filter((item: ITask) => item.id !== id));
   };
 
   const handleIsDoneChanged = (id: number) => {
     setAllTasks(
-      (todo) => todo.id === id,
+      (todo: ITask) => todo.id === id,
       "isDone",
-      (isDone) => !isDone
+      (isDone: boolean) => !isDone
     );
   };
 
@@ -73,7 +72,7 @@ function App() {
 
       <div class="mb-3 d-flex flex-column gap-3">
         <For each={allTasks}>
-          {(item) => (
+          {(item: ITask) => (
             <TaskRow
               task={item}
               onDeleteClick={handleDeleteClick}

@@ -48,6 +48,19 @@ function App() {
     setAllTasks((t: ITask[]) => t.filter((item: ITask) => item.id !== id));
   };
 
+  const handleChangeClick = (id: number, name: string) => {
+    setAllTasks((tasks: ITask[]) => 
+      tasks.map((item: ITask) => 
+        (item.id === id) ?
+          {
+            ...item,
+            name
+          }
+        : { ...item }
+      )
+    );
+  }
+
   const handleIsDoneChanged = (id: number) => {
     setAllTasks(
       (todo: ITask) => todo.id === id,
@@ -77,6 +90,7 @@ function App() {
               task={item}
               onDeleteClick={handleDeleteClick}
               onIsDoneChanged={handleIsDoneChanged}
+              onChangeClick={handleChangeClick}
             />
           )}
         </For>

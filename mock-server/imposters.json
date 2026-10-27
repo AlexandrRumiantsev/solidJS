@@ -16,7 +16,7 @@
                   "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
                   "Access-Control-Allow-Headers": "Content-Type, Authorization"
                 },
-                "body": "{\"tasks\":[{\"id\":1,\"name\":\"Зарефакторить сайт рена\"}, {\"id\":1,\"name\":\"Пофиксить метрику\"}, {\"id\":1,\"name\":\"Переписать фронт ИЗА\"}, {\"id\":1,\"name\":\"Добавить котеек на рен\"}]}"
+                "body": "{\"tasks\":[{\"id\":1,\"name\":\"Зарефакторить сайт рена\"}, {\"id\":2,\"name\":\"Пофиксить метрику\"}, {\"id\":3,\"name\":\"Переписать фронт ИЗА\"}, {\"id\":4,\"name\":\"Добавить котеек на рен\"}]}"
               }
             }
           ],

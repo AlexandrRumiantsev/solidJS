@@ -1,4 +1,4 @@
-import { Show, createUniqueId, mergeProps } from "solid-js";
+import { Show, createUniqueId } from "solid-js";
 
 type Props = {
   name: string;
@@ -6,15 +6,8 @@ type Props = {
   onIsDoneChanged: () => void;
 };
 
-export default function Task(_props: Props) {
+export default function Task(props: Props) {
   const id = createUniqueId();
-  const props = mergeProps(
-    {
-      name: "Задача №1",
-      isDone: false,
-    },
-    _props
-  );
 
   return (
     <div class="form-check task">

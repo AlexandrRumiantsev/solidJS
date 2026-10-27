@@ -1,0 +1,19 @@
+{
+  "name": "mock-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "mb --configfile imposters.json --allowInjection"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mountebank": "^2.9.1"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.6"
+  }
+}

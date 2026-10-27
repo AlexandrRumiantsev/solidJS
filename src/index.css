@@ -1,0 +1,314 @@
+:root {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial,
+    sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light;
+
+  /* Палитра */
+  --bg-1: #667eea;
+  --bg-2: #764ba2;
+  --card-bg: #ffffff;
+  --text-primary: #1f2937;
+  --text-muted: #6b7280;
+  --accent: #6366f1;
+  --accent-2: #8b5cf6;
+  --danger: #dc2626;
+  --danger-bg: #fee2e2;
+  --danger-bg-hover: #fecaca;
+  --border: #e5e7eb;
+  --border-strong: #d1d5db;
+  --surface: #f9fafb;
+  --surface-hover: #f3f4f6;
+
+  /* Радиусы и тени */
+  --radius-lg: 24px;
+  --radius-md: 12px;
+  --radius-sm: 10px;
+  --shadow-card: 0 24px 48px -12px rgba(31, 41, 55, 0.28);
+  --shadow-btn: 0 6px 16px -4px rgba(99, 102, 241, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 100%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* ---------- Карточка приложения ---------- */
+.container {
+  position: relative;
+  width: 100%;
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 2rem 2rem 2.5rem;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+/* Заголовок */
+.container::before {
+  content: "📝 Мои задачи";
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+/* Цветная полоска сверху */
+.container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+/* ---------- Утилиты ---------- */
+.d-flex {
+  display: flex;
+}
+.flex-row {
+  flex-direction: row;
+}
+.flex-column {
+  flex-direction: column;
+}
+.justify-content-between {
+  justify-content: space-between;
+}
+.align-items-center {
+  align-items: center;
+}
+.gap-3 {
+  gap: 1rem;
+}
+.flex-grow-1 {
+  flex-grow: 1;
+}
+.mt-3 {
+  margin-top: 1rem;
+}
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+/* ---------- Поле ввода ---------- */
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--text-primary);
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.form-control::placeholder {
+  color: #9ca3af;
+}
+
+.form-control:hover {
+  border-color: var(--border-strong);
+}
+
+.form-control:focus {
+  outline: none;
+  background: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+
+/* ---------- Кнопки ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  line-height: 1.2;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease,
+    color 0.2s ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-success {
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+  box-shadow: var(--shadow-btn);
+}
+
+.btn-success:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px -6px rgba(99, 102, 241, 0.55);
+}
+
+.btn-danger {
+  color: var(--danger);
+  background: var(--danger-bg);
+}
+
+.btn-danger:hover {
+  background: var(--danger-bg-hover);
+}
+
+/* ---------- Задача ---------- */
+.form-check.task {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.form-check.task:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-strong);
+}
+
+.form-check-input {
+  appearance: none;
+  -webkit-appearance: none;
+  flex-shrink: 0;
+  width: 1.35rem;
+  height: 1.35rem;
+  margin: 0;
+  background: #fff;
+  border: 2px solid var(--border-strong);
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-check-input:hover {
+  border-color: var(--accent);
+}
+
+.form-check-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.form-check-input:checked {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M12.207 4.793a1 1 0 0 1 0 1.414l-5 5a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L6.5 9.086l4.293-4.293a1 1 0 0 1 1.414 0z'/%3e%3c/svg%3e");
+  background-size: 0.9rem;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.form-check-label {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  user-select: none;
+  word-break: break-word;
+}
+
+.form-check-label del {
+  color: var(--text-muted);
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+}
+
+/* ---------- Список задач ---------- */
+.container > .d-flex.flex-column {
+  margin-top: 1.5rem;
+}
+
+/* Пустое состояние */
+.container > .d-flex.flex-column:empty::after {
+  content: "✨ Пока нет задач — добавьте первую!";
+  display: block;
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: var(--text-muted);
+  font-size: 1rem;
+  background: var(--surface);
+  border: 2px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+}
+
+/* ---------- Адаптивность ---------- */
+@media (max-width: 480px) {
+  body {
+    padding: 1rem;
+    align-items: flex-start;
+  }
+
+  .container {
+    padding: 1.5rem 1.25rem 2rem;
+    border-radius: 20px;
+  }
+
+  .container::before {
+    font-size: 1.35rem;
+  }
+
+  /* Строка ввода складывается в колонку */
+  .container > .d-flex.flex-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .container > .d-flex.flex-row > .mt-3 {
+    margin-top: 0;
+  }
+
+  .container > .d-flex.flex-row > .mt-3 .btn {
+    width: 100%;
+  }
+}

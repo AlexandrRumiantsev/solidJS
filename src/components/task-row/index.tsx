@@ -1,4 +1,4 @@
-import type { ITask } from "../../App";
+import type { ITask } from "../../pages/Home";
 import Button from "../button";
 import Task from "../task";
 

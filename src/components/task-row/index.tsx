@@ -1,6 +1,7 @@
 import type { ITask } from "../../pages/Home";
 import Button from "../button";
 import Task from "../task";
+import { A } from "@solidjs/router"
 
 type Props = {
   task: ITask;
@@ -34,6 +35,7 @@ export default function TaskRow(props: Props) {
           onIsDoneChanged={handleIsDoneChanged}
         />
       </div>
+      <A href={`/task/work/${props.task.id}`}>Перейти</A>
       <Button name="Редактировать" onClick={handleEditClick} type="add" />
       <Button name="Удалить" onClick={handleDeleteClick} type="delete" />
     </div>
